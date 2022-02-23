@@ -1,5 +1,5 @@
-# COMP235MVCDemo
-Query to create Movies Table:
+# COMP235MVCDemo.
+Query to create Movies Table:.
 CREATE TABLE [dbo].[Movies] (
     [Id]          INT        NOT NULL,
     [Title]       NCHAR (30) NULL,
