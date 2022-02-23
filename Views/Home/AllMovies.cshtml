@@ -4,7 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>All Movies</h2><hr />
+<h2>All Movies</h2>
+<hr />
 @Html.ActionLink("Add a New Movie", "AddMovie", "Home") <p><br /></p>
 @using (Html.BeginForm("AllMovies", "Home", FormMethod.Post))
 {
@@ -30,9 +31,9 @@
             {
                 if (!Model.Items[i].IsEditable)
                 {
-                    <tr >
+                    <tr>
                         @Html.HiddenFor(m => m.Items[i].Id)
-                        <td>@Html.DisplayFor(m => m.Items[i].Title)</td>
+                        <td style="border-bottom-left-radius: 10px; border-top-left-radius: 10px;">@Html.DisplayFor(m => m.Items[i].Title)</td>
                         <td>@Html.DisplayFor(m => m.Items[i].Director)</td>
                         <td>@Html.DisplayFor(m => m.Items[i].Description)</td>
                         <td>
@@ -44,18 +45,18 @@
                 }
                 else
                 {
-                    <tr style="background-color: #d8d6d6; border-radius:20px">
+                    <tr style="background-color: #e2e1e1;" class="editRow">
                         @Html.HiddenFor(m => m.Items[i].Id)
-                        <td>@Html.TextBoxFor(m => m.Items[i].Title)</td>
-                        <td>@Html.TextBoxFor(m => m.Items[i].Director)</td>
-                        <td>@Html.TextBoxFor(m => m.Items[i].Description)</td>
-                        <td>
+                        <td>@Html.TextBoxFor(m => m.Items[i].Title, new { Class = "textboxclass" })</td>
+                        <td>@Html.TextBoxFor(m => m.Items[i].Director, new { Class = "textboxclass" })</td>
+                        <td>@Html.TextBoxFor(m => m.Items[i].Description, new { Class = "textboxclass" })</td>
+                        <td style="border-bottom-right-radius: 10px; border-top-right-radius: 10px;">
                             @Html.ActionLink("Details", "Details", new { Id = Model.Items[i].Id }) &nbsp;|<input type="submit" value="Save" name="Save" class="btn btn-link" /> |
-                        <input type="submit" value="Cancel" name="Cancel" class="btn btn-link" />
-                    </td>
-                </tr>
+                            <input type="submit" value="Cancel" name="Cancel" class="btn btn-link" />
+                        </td>
+                    </tr>
+                }
             }
-        }
         </tbody>
     </table>
 

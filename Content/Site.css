@@ -3,11 +3,17 @@
     padding-bottom: 20px;
 }
 
-/*input[type=text]:focus {
+/*textboxclass:focus {
     border: 3px solid #555;
+    border-radius: 20px;
+    background-color:greenyellow;
 }*/
 
 
+.textboxclass {
+    border: none;
+    border-radius: 5px;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
