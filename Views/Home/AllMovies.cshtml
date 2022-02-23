@@ -1,0 +1,116 @@
+﻿@model COMP235MVCDemo.Models.Movies
+@{
+    ViewBag.Title = "AllMovies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Movies</h2><hr />
+@Html.ActionLink("Add a New Movie", "AddMovie", "Home") <p><br /></p>
+@using (Html.BeginForm("AllMovies", "Home", FormMethod.Post))
+{
+    var i = 0;
+    @Html.HiddenFor(m => m.EditIndex)
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Director
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (i = 0; i < Model.Items.Count(); i++)
+            {
+                if (!Model.Items[i].IsEditable)
+                {
+                    <tr >
+                        @Html.HiddenFor(m => m.Items[i].Id)
+                        <td>@Html.DisplayFor(m => m.Items[i].Title)</td>
+                        <td>@Html.DisplayFor(m => m.Items[i].Director)</td>
+                        <td>@Html.DisplayFor(m => m.Items[i].Description)</td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { Id = Model.Items[i].Id }) |
+                            @Html.ActionLink("Edit", "MoviesEdit", new { id = Model.Items[i].Id }) |
+                            @Html.ActionLink("Delete", "MoviesDelete", new { id = Model.Items[i].Id })
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr style="background-color: #d8d6d6; border-radius:20px">
+                        @Html.HiddenFor(m => m.Items[i].Id)
+                        <td>@Html.TextBoxFor(m => m.Items[i].Title)</td>
+                        <td>@Html.TextBoxFor(m => m.Items[i].Director)</td>
+                        <td>@Html.TextBoxFor(m => m.Items[i].Description)</td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { Id = Model.Items[i].Id }) &nbsp;|<input type="submit" value="Save" name="Save" class="btn btn-link" /> |
+                        <input type="submit" value="Cancel" name="Cancel" class="btn btn-link" />
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+
+
+
+
+
+    @*var i = 0;
+        @Html.HiddenFor(m => m.EditIndex)
+        <table>
+            @for (i = 0; i < Model.Items.Count(); i++)
+            {
+                if (!Model.Items[i].IsEditable)
+                {
+                    <tr>
+                        <td>@Html.HiddenFor(m => m.Items[i].Id)</td>
+                        <td>@Html.DisplayFor(m => m.Items[i].Title)</td>
+                        <td>@Html.DisplayFor(m => m.Items[i].Director)</td>
+                        <td>@Html.ActionLink("Details", "Details", new { Id = Model.Items[i].Id })</td>
+                        <td>@Html.ActionLink("Edit", "MoviesEdit", new { id = Model.Items[i].Id })</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>@Html.HiddenFor(m => m.Items[i].Id)</td>
+                        <td>@Html.TextBoxFor(m => m.Items[i].Title)</td>
+                        <td>@Html.TextBoxFor(m => m.Items[i].Director)</td>
+                        <td>@Html.ActionLink("Details", "Details", new { Id = Model.Items[i].Id })</td>
+                        <td> <input type="submit" value="Save" name="Save" class="btn btn-link" /></td>
+                        <td> <input type="submit" value="Cancel" name="Cancel" class="btn btn-link" /></td>
+                    </tr>
+                }
+            }
+        </table>*@
+}
+
+
+
+
+
+
+
+@*@using (Html.BeginForm("AllMovies", "Home", FormMethod.Post))
+    {
+        var i = 0;
+        <table>
+            @for (i = 0; i < Model.Items.Count(); i++)
+            {
+                <tr>
+                    <td>@Html.HiddenFor(m => m.Items[i].Id)</td>
+                    <td>@Html.TextBoxFor(m => m.Items[i].Title)</td>
+                    <td>@Html.TextBoxFor(m => m.Items[i].Director)</td>
+                    <td>@Html.ActionLink("Details", "Details", new { Id = Model.Items[i].Id })</td>
+                </tr>
+            }
+        </table>
+    }*@
