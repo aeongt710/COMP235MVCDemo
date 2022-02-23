@@ -10,6 +10,7 @@ namespace COMP235MVCDemo.Models
         public List<Movie> Items { get; set; }
         public int EditIndex { get; set; }
 
+        //Default Constructor
         public Movies() { }
 
 

@@ -12,16 +12,21 @@ namespace COMP235MVCDemo.Models
         public string Director { get; set; }
         public string Description { get; set; }
 
+        //Set whether the Object is editable or not.
         public bool IsEditable { get; set; }
        
-
+        //Default constructor
         public Movie() { }
+
+        //Constructor without Description Field
         public Movie(int id, string title, string director)
         {
             Id = id;
             Title = title;
             Director = director;
         }
+
+        //Constructor with Description Field
         public Movie(int id, string title, string director, string description)
         {
             Id = id;
